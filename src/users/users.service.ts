@@ -14,11 +14,11 @@ export class UsersService {
     private readonly userRepository: Repository<User>,
   ) {}
 
-  async create({ email, fullName, password }: CreateUserDto) {
+  async create({ email, username, password }: CreateUserDto) {
     try {
       const newUser = this.userRepository.create({
         email,
-        fullName,
+        username,
         password: bcrypt.hashSync(password, 10),
       });
       return await this.userRepository.save(newUser);
@@ -27,8 +27,8 @@ export class UsersService {
     }
   }
 
-  async findOneByEmail(email: string) {
-    return this.userRepository.findOneBy({ email, deletedAt: null });
+  async findOneByEmail(username: string) {
+    return this.userRepository.findOneBy({ username, deletedAt: null });
   }
 
   findAll() {

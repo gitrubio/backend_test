@@ -13,7 +13,7 @@ import { JWT_SECRET } from './constants/constanst';
     JwtModule.register({
       global: true,
       secret: JWT_SECRET,
-      signOptions: { expiresIn: '1d' },
+      signOptions: { expiresIn: '4h' },
     }),
   ],
   controllers: [AuthController],

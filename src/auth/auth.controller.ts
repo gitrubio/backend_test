@@ -4,8 +4,8 @@ import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
 import { AuthGuard } from './guards/auth.guard';
 import { User } from 'src/users/entities/user.entity';
-import { ActiveUser } from './decorators/active-user.decorator';
-import { ApiBearerAuth } from '@nestjs/swagger';
+import { ActiveUser } from 'src/common/decorators/active-user.decorator';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 /*
   This controller is responsible for handling all the authentication related routes.
@@ -13,6 +13,7 @@ import { ApiBearerAuth } from '@nestjs/swagger';
   - POST /auth/register: This route is responsible for registering a new user.
   - POST /auth/login: This route is responsible for logging in a user.
 */
+@ApiTags('auth')
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}

@@ -28,7 +28,7 @@ export class AuthService {
     return {
       access_token,
       user : {
-        fullName: user.fullName,
+        username: user.username,
         email: user.email,
       }
     };
@@ -36,8 +36,8 @@ export class AuthService {
   validatePassword(password: string): boolean {
     return REGEX_PASSWORD.test(password);
   }
-  async login({ email, password }: LoginDto) {
-    const user = await this.UserService.findOneByEmail(email);
+  async login({ username, password }: LoginDto) {
+    const user = await this.UserService.findOneByEmail(username);
     if (!user) {
       throw new UnauthorizedException('Email not found');
     }
@@ -48,7 +48,7 @@ export class AuthService {
     return {
       access_token,
       user : {
-        fullName: user.fullName,
+        username: user.username,
         email: user.email,
       }
     };
@@ -59,7 +59,7 @@ export class AuthService {
     return {
       access_token: token,
       user : {
-        fullName: user.fullName,
+        username: user.username,
         email: user.email,
       }
     };

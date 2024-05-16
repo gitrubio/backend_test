@@ -1,4 +1,4 @@
-export const JWT_SECRET = 'asdadasdads'
+export const JWT_SECRET = process.env.JWT_SECRET
 
 export const DB_ERROR_CODES = {
     UNIQUE_CONSTRAINT: '23505'

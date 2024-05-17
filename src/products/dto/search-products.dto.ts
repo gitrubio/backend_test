@@ -4,13 +4,13 @@ import { IsNumber, IsOptional, IsString } from "class-validator";
 export class SearchProductDto {
     @IsOptional()
     @IsString()
-    title: string;
+    title?: string;
     
     @Transform(({ value }) => +value)
     @IsOptional()
     @IsNumber()
     offset: number = 0;
-    
+
     @Transform(({ value }) => +value)
     @IsOptional()
     @IsNumber()

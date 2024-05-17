@@ -9,7 +9,7 @@ export class Product {
     Handle: string
 
     @Column({nullable: false})
-    TitleL: string
+    Title: string
 
     @Column({nullable: false})
     Description: string

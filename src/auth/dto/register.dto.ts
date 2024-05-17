@@ -6,7 +6,7 @@ export class RegisterDto {
     @Transform(({ value }) => value.trim())
     @IsString()
     @MinLength(6)
-    username: string;
+    name: string;
 
     @Transform(({ value }) => value.toLowerCase())
     @IsEmail()

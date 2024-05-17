@@ -3,7 +3,8 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { Product } from './entities/product.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Like, Raw, Repository } from 'typeorm';
+import { SearchProductDto } from './dto/search-products.dto';
 
 
 @Injectable()
@@ -24,8 +25,16 @@ export class ProductsService {
     }
   }
 
-  async findAll() {
-    return this.productRepository.find();
+  async findAll(searchParams: SearchProductDto) {
+    const { limit,offset,title } = searchParams;
+    const where = title ? { Title: Raw((alias)=> `${alias} LIKE '%${title}%'`) } : null
+    const products = await  this.productRepository.find({
+      take: limit,
+      skip: offset,
+      where: where,
+    });
+    const totalProducts: number = await this.productRepository.count({where});
+    return {products,totalProducts};
   }
 
   async findOne(id: string) {

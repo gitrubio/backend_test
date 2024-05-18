@@ -28,7 +28,7 @@ export class AuthService {
     return {
       access_token,
       user : {
-        username: user.name,
+        name: user.name,
         email: user.email,
       }
     };
@@ -48,7 +48,7 @@ export class AuthService {
     return {
       access_token,
       user : {
-        username: user.name,
+        name: user.name,
         email: user.email,
       }
     };
@@ -59,7 +59,7 @@ export class AuthService {
     return {
       access_token: token,
       user : {
-        username: user.name,
+        name: user.name,
         email: user.email,
       }
     };

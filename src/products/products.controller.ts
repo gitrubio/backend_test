@@ -20,7 +20,6 @@ export class ProductsController {
 
   @Get()
   findAll(@Query() searchParams: SearchProductDto) {
-    console.log(searchParams);
     return this.productsService.findAll(searchParams);
   }
 

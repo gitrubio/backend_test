@@ -27,11 +27,14 @@ export class ProductsService {
 
   async findAll(searchParams: SearchProductDto) {
     const { limit,offset,title } = searchParams;
-    const where = title ? { Title: Raw((alias)=> `${alias} LIKE '%${title}%'`) } : null
+    const where = title ? { Title: Raw((alias)=> `LOWER(${alias}) LIKE '%${title}%'`) } : null
     const products = await  this.productRepository.find({
       take: limit,
       skip: offset,
       where: where,
+      order: {
+        Title: 'ASC'
+      }
     });
     const totalProducts: number = await this.productRepository.count({where});
     return {products,totalProducts};

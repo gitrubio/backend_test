@@ -2,10 +2,7 @@ import { Transform } from "class-transformer"
 import { IsNumber, IsString, MinLength } from "class-validator"
 
 export class CreateProductDto {
-    @Transform(({ value }) => value.trim())
-    @IsString()
-    @MinLength(6)
-    Handle: string
+
 
     @Transform(({ value }) => value.trim())
     @IsString()

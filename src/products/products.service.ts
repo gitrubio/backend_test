@@ -16,7 +16,7 @@ export class ProductsService {
   ) {}
   async create(createProductDto: CreateProductDto) {
     try {
-       const product = this.productRepository.create(createProductDto);
+       const product = this.productRepository.create({...createProductDto, Handle: createProductDto.Title.toLowerCase().replace(/ /g, '-')});
 
         return await this.productRepository.save(product);
         

@@ -44,7 +44,7 @@ export const stockMockData: StockResponse[] = [
   },
   {
     symbol: "GOOGL",
-    name: "Alphabet Inc.",
+    name: "Google Inc.",
     lastUpdated: "2025-02-25",
     months: monthsArray,
     closePrices: [1185, 1200, 1215, 1230, 1250, 1275, 1290, 1305, 1320, 1340, 1360, 1385],
